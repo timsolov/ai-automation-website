@@ -1,10 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
-import { CheckCircle2, Clock, Globe } from "lucide-react";
 
 interface ContactFormProps {
   variant?: "hero" | "full";
@@ -12,26 +8,25 @@ interface ContactFormProps {
 
 const ContactForm = ({ variant = "hero" }: ContactFormProps) => {
   const { toast } = useToast();
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
     description: "",
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
+    setLoading(true);
 
-    // Simulate form submission
     setTimeout(() => {
       toast({
         title: "Request Submitted Successfully!",
         description: "We'll contact you within 24 hours.",
       });
       setFormData({ name: "", email: "", phone: "", description: "" });
-      setIsSubmitting(false);
+      setLoading(false);
     }, 1000);
   };
 
@@ -44,97 +39,98 @@ const ContactForm = ({ variant = "hero" }: ContactFormProps) => {
     }));
   };
 
-  const trustBadges = [
-    { icon: Clock, text: "Response within 24 hours" },
-    { icon: CheckCircle2, text: "Confidential & secure" },
-    { icon: Globe, text: "English & Russian support" },
-  ];
-
   return (
-    <div className="w-full">
-      <form
-        onSubmit={handleSubmit}
-        className="space-y-4 bg-card/50 backdrop-blur-sm border border-border rounded-xl p-6 md:p-8"
-      >
-        <div className="space-y-2">
-          <Label htmlFor="name">Full Name *</Label>
-          <Input
-            id="name"
-            name="name"
-            type="text"
-            placeholder="John Doe"
-            value={formData.name}
-            onChange={handleChange}
-            required
-            className="bg-input border-border"
-          />
-        </div>
-
-        <div className="space-y-2">
-          <Label htmlFor="email">Email Address *</Label>
-          <Input
-            id="email"
-            name="email"
-            type="email"
-            placeholder="john@company.com"
-            value={formData.email}
-            onChange={handleChange}
-            required
-            className="bg-input border-border"
-          />
-        </div>
-
-        <div className="space-y-2">
-          <Label htmlFor="phone">Phone Number</Label>
-          <Input
-            id="phone"
-            name="phone"
-            type="tel"
-            placeholder="+1 (555) 000-0000"
-            value={formData.phone}
-            onChange={handleChange}
-            className="bg-input border-border"
-          />
-        </div>
-
-        {variant === "full" && (
+    <div className="w-full bg-card border border-border rounded-lg p-6 md:p-8">
+      <form onSubmit={handleSubmit} className="space-y-6">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
           <div className="space-y-2">
-            <Label htmlFor="description">Project Description *</Label>
-            <Textarea
-              id="description"
-              name="description"
-              placeholder="Tell us about your automation needs..."
-              value={formData.description}
+            <label htmlFor="name" className="text-sm font-medium text-foreground">
+              Name *
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={formData.name}
               onChange={handleChange}
               required
-              rows={4}
-              className="bg-input border-border resize-none"
+              className="w-full px-4 py-3 bg-background border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-ring text-foreground"
+              placeholder="John Doe"
             />
           </div>
-        )}
+
+          <div className="space-y-2">
+            <label htmlFor="email" className="text-sm font-medium text-foreground">
+              Email *
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+              className="w-full px-4 py-3 bg-background border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-ring text-foreground"
+              placeholder="john@example.com"
+            />
+          </div>
+        </div>
+
+        <div className="space-y-2">
+          <label htmlFor="phone" className="text-sm font-medium text-foreground">
+            Phone
+          </label>
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            value={formData.phone}
+            onChange={handleChange}
+            className="w-full px-4 py-3 bg-background border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-ring text-foreground"
+            placeholder="+1 (555) 123-4567"
+          />
+        </div>
+
+        <div className="space-y-2">
+          <label htmlFor="description" className="text-sm font-medium text-foreground">
+            Project Description *
+          </label>
+          <textarea
+            id="description"
+            name="description"
+            value={formData.description}
+            onChange={handleChange}
+            required
+            rows={variant === "hero" ? 3 : 5}
+            className="w-full px-4 py-3 bg-background border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-ring text-foreground resize-none"
+            placeholder="Tell us about your project..."
+          />
+        </div>
 
         <Button
           type="submit"
-          variant="hero"
-          size="xl"
+          size={variant === "hero" ? "default" : "lg"}
           className="w-full"
-          disabled={isSubmitting}
+          disabled={loading}
         >
-          {isSubmitting ? "Submitting..." : "✅ Submit My Request"}
+          {loading ? (
+            <span className="flex items-center gap-2">
+              <div className="animate-spin h-4 w-4 border-2 border-white border-t-transparent rounded-full"></div>
+              Submitting...
+            </span>
+          ) : (
+            "Submit Request"
+          )}
         </Button>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 pt-4 border-t border-border/50">
-          {trustBadges.map((badge, index) => (
-            <div
-              key={index}
-              className="flex items-center gap-2 text-xs text-muted-foreground"
-            >
-              <badge.icon className="h-4 w-4 text-primary" />
-              <span>{badge.text}</span>
-            </div>
-          ))}
-        </div>
       </form>
+
+      {variant === "full" && (
+        <div className="mt-6 pt-6 border-t border-border">
+          <p className="text-sm text-muted-foreground text-center">
+            ✓ Response within 24 hours · ✓ Confidential & secure · ✓ English & Russian support
+          </p>
+        </div>
+      )}
     </div>
   );
 };

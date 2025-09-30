@@ -25,19 +25,14 @@ const FoundersSection = () => {
   ];
 
   return (
-    <section className="py-20 md:py-32 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-card/50 to-background" />
-      
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-16 space-y-4">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold">
-            Proven Expertise in{" "}
-            <span className="gradient-text">Global Tech & Automation</span>
+    <section className="py-20 md:py-32 bg-accent/10">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4">
+            Proven Expertise in Global Tech & Automation
           </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            Our founders bring decades of experience from leading positions in
-            Big Tech, delivering automation solutions that transform businesses
-            worldwide.
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Our founders bring decades of experience from leading positions in Big Tech, delivering automation solutions that transform businesses worldwide.
           </p>
         </div>
 
@@ -46,10 +41,10 @@ const FoundersSection = () => {
           {stats.map((stat, index) => (
             <div
               key={index}
-              className="bg-card border border-border rounded-xl p-6 text-center hover:border-primary/50 transition-colors"
+              className="bg-background border border-border rounded-lg p-6 text-center"
             >
               <stat.icon className="h-8 w-8 text-primary mx-auto mb-3" />
-              <div className="text-3xl font-bold gradient-text mb-1">
+              <div className="text-3xl font-bold text-primary mb-1">
                 {stat.value}
               </div>
               <div className="text-sm text-muted-foreground">{stat.label}</div>
@@ -62,17 +57,17 @@ const FoundersSection = () => {
           {founders.map((founder, index) => (
             <div
               key={index}
-              className="group bg-card border border-border rounded-2xl overflow-hidden hover:border-primary/50 transition-all duration-300 hover:shadow-xl hover:shadow-primary/10"
+              className="bg-background border border-border rounded-lg overflow-hidden hover:shadow-lg transition-all duration-300"
             >
               <div className="aspect-square overflow-hidden">
                 <img
                   src={founder.image}
                   alt={founder.name}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="w-full h-full object-cover"
                 />
               </div>
               <div className="p-6 space-y-3">
-                <div className="inline-block px-3 py-1 bg-primary/10 border border-primary/20 rounded-full text-sm text-primary font-medium">
+                <div className="inline-block px-3 py-1 bg-primary/10 rounded-full text-sm text-primary font-medium">
                   {founder.experience}
                 </div>
                 <h3 className="text-xl font-bold">{founder.name}</h3>

@@ -1,65 +1,67 @@
-import ContactForm from "./ContactForm";
-import heroBackground from "@/assets/hero-background.jpg";
-import founder1 from "@/assets/founder-1.jpg";
-import founder2 from "@/assets/founder-2.jpg";
+import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const HeroSection = () => {
+  const scrollToForm = () => {
+    const formSection = document.getElementById("contact-form");
+    if (formSection) {
+      formSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
-    <section className="relative min-h-screen flex items-center pt-20 pb-12 overflow-hidden">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-card" />
-      
-      {/* Animated background image */}
-      <div 
-        className="absolute inset-0 opacity-20 bg-cover bg-center animate-float"
-        style={{ backgroundImage: `url(${heroBackground})` }}
-      />
+    <section className="relative pt-32 pb-20 md:pt-40 md:pb-32 bg-gradient-to-b from-accent/20 to-background">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto text-center">
+          <div className="inline-block mb-4 px-4 py-2 bg-primary/10 rounded-full">
+            <span className="text-sm font-medium text-primary">
+              State of the art · 15+ Years Experience
+            </span>
+          </div>
+          
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-foreground mb-6 leading-tight">
+            Transform Your Business with AI Automation
+          </h1>
+          
+          <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
+            We build intelligent automation systems that streamline operations, boost productivity, and drive measurable growth for forward-thinking businesses.
+          </p>
 
-      {/* Animated gradient orbs */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-pulse" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/20 rounded-full blur-3xl animate-pulse delay-1000" />
-
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left Column - Content */}
-          <div className="space-y-8">
-            <div className="space-y-4">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight">
-                Automate Growth.{" "}
-                <span className="gradient-text">Accelerate Results.</span>
-              </h1>
-              <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl">
-                We build AI-driven automation, SEO, and marketing systems that
-                help businesses cut costs, save time, and scale faster.
-              </p>
-            </div>
-
-            {/* Founder preview */}
-            <div className="flex items-center gap-4 p-4 bg-card/30 backdrop-blur-sm border border-border rounded-xl">
-              <div className="flex -space-x-4">
-                <img
-                  src={founder1}
-                  alt="Founder 1"
-                  className="w-12 h-12 rounded-full border-2 border-background object-cover"
-                />
-                <img
-                  src={founder2}
-                  alt="Founder 2"
-                  className="w-12 h-12 rounded-full border-2 border-background object-cover"
-                />
-              </div>
-              <div className="text-sm">
-                <p className="font-semibold">Decades of experience</p>
-                <p className="text-muted-foreground">
-                  in AI, programming, and business automation
-                </p>
-              </div>
-            </div>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <Button
+              size="lg"
+              onClick={scrollToForm}
+              className="group"
+            >
+              Start Your Project
+              <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+            </Button>
+            
+            <Button
+              size="lg"
+              variant="outline"
+              asChild
+            >
+              <Link to="/why-automation">
+                Why Automation?
+              </Link>
+            </Button>
           </div>
 
-          {/* Right Column - Form */}
-          <div className="lg:ml-auto max-w-lg w-full">
-            <ContactForm variant="hero" />
+          <div className="mt-12 flex flex-wrap justify-center gap-8 text-sm text-muted-foreground">
+            <div className="flex items-center gap-2">
+              <div className="h-2 w-2 rounded-full bg-primary"></div>
+              <span>24h Response Time</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="h-2 w-2 rounded-full bg-primary"></div>
+              <span>English & Russian</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="h-2 w-2 rounded-full bg-primary"></div>
+              <span>Big Tech Experience</span>
+            </div>
           </div>
         </div>
       </div>
