@@ -5,12 +5,10 @@ const FoundersSection = () => {
     {
       name: "AI & Software Engineering Leader",
       experience: "15+ years experience",
-      description: "Led international teams in Big Tech, specializing in AI systems and enterprise automation solutions.",
     },
     {
       name: "Tech Innovator & Business Automation Expert",
       experience: "15+ years experience",
-      description: "Global automation expert with proven track record in scaling business operations through technology.",
     },
   ];
 
@@ -60,7 +58,6 @@ const FoundersSection = () => {
                   {founder.experience}
                 </div>
                 <h3 className="text-xl font-bold">{founder.name}</h3>
-                <p className="text-muted-foreground">{founder.description}</p>
               </div>
             </div>
           ))}
