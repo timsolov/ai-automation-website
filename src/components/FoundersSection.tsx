@@ -1,4 +1,4 @@
-import { Award, Users, Sparkles } from "lucide-react";
+
 
 const FoundersSection = () => {
   const founders = [
@@ -12,11 +12,6 @@ const FoundersSection = () => {
     },
   ];
 
-  const stats = [
-    { icon: Award, label: "Big Tech Experience", value: "15+ Years" },
-    { icon: Users, label: "International Teams Led", value: "50+" },
-    { icon: Sparkles, label: "Automation Projects", value: "200+" },
-  ];
 
   return (
     <section className="py-20 md:py-32 bg-accent/10">
@@ -28,22 +23,6 @@ const FoundersSection = () => {
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Our founders bring decades of experience from leading positions in Big Tech, delivering automation solutions that transform businesses worldwide.
           </p>
-        </div>
-
-        {/* Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-          {stats.map((stat, index) => (
-            <div
-              key={index}
-              className="bg-background border border-border rounded-lg p-6 text-center"
-            >
-              <stat.icon className="h-8 w-8 text-primary mx-auto mb-3" />
-              <div className="text-3xl font-bold text-primary mb-1">
-                {stat.value}
-              </div>
-              <div className="text-sm text-muted-foreground">{stat.label}</div>
-            </div>
-          ))}
         </div>
 
         {/* Founders */}
