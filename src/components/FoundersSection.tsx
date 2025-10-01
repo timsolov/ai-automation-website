@@ -1,18 +1,14 @@
 import { Award, Users, Sparkles } from "lucide-react";
-import founder1 from "@/assets/founder-1.jpg";
-import founder2 from "@/assets/founder-2.jpg";
 
 const FoundersSection = () => {
   const founders = [
     {
       name: "AI & Software Engineering Leader",
-      image: founder1,
       experience: "15+ years experience",
       description: "Led international teams in Big Tech, specializing in AI systems and enterprise automation solutions.",
     },
     {
       name: "Tech Innovator & Business Automation Expert",
-      image: founder2,
       experience: "15+ years experience",
       description: "Global automation expert with proven track record in scaling business operations through technology.",
     },
@@ -57,16 +53,9 @@ const FoundersSection = () => {
           {founders.map((founder, index) => (
             <div
               key={index}
-              className="bg-background border border-border rounded-lg overflow-hidden hover:shadow-lg transition-all duration-300"
+              className="bg-background border border-border rounded-lg p-8 hover:shadow-lg transition-all duration-300"
             >
-              <div className="aspect-square overflow-hidden">
-                <img
-                  src={founder.image}
-                  alt={founder.name}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="p-6 space-y-3">
+              <div className="space-y-3">
                 <div className="inline-block px-3 py-1 bg-primary/10 rounded-full text-sm text-primary font-medium">
                   {founder.experience}
                 </div>
