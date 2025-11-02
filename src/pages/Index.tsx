@@ -6,20 +6,24 @@ import HowItWorksSection from "@/components/HowItWorksSection";
 import SocialProofSection from "@/components/SocialProofSection";
 import FinalCTASection from "@/components/FinalCTASection";
 import Footer from "@/components/Footer";
+import NeuralNoiseBackground from "@/components/NeuralNoiseBackground";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
-      <Navigation />
-      <main>
-        <HeroSection />
-        <FoundersSection />
-        <ServicesSection />
-        <HowItWorksSection />
-        <SocialProofSection />
-        <FinalCTASection />
-      </main>
-      <Footer />
+    <div className="min-h-screen bg-background relative">
+      <NeuralNoiseBackground />
+      <div className="relative z-10">
+        <Navigation />
+        <main>
+          <HeroSection />
+          <FoundersSection />
+          <ServicesSection />
+          <HowItWorksSection />
+          <SocialProofSection />
+          <FinalCTASection />
+        </main>
+        <Footer />
+      </div>
     </div>
   );
 };
