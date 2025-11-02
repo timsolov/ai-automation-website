@@ -1,16 +1,6 @@
 import { Star } from "lucide-react";
 
 const SocialProofSection = () => {
-  // Placeholder for client logos - will be replaced with actual logos
-  const clientLogos = [
-    "Client A",
-    "Client B",
-    "Client C",
-    "Client D",
-    "Client E",
-    "Client F",
-  ];
-
   const testimonials = [
     {
       text: "The automation solution saved us 20+ hours per week and significantly improved our conversion rates.",
@@ -43,22 +33,6 @@ const SocialProofSection = () => {
             Join the businesses that have transformed their operations with our
             automation solutions
           </p>
-        </div>
-
-        {/* Client Logos */}
-        <div className="mb-16">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center">
-            {clientLogos.map((client, index) => (
-              <div
-                key={index}
-                className="flex items-center justify-center h-20 bg-card border border-border rounded-xl hover:border-primary/50 transition-colors"
-              >
-                <span className="text-muted-foreground font-semibold">
-                  {client}
-                </span>
-              </div>
-            ))}
-          </div>
         </div>
 
         {/* Testimonials */}
